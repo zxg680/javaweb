@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee 
+   http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+    version="3.1">
+
+    <display-name>Hello World Application</display-name>
+
+    <servlet>
+        <servlet-name>helloServlet</servlet-name>
+        <servlet-class>com.wrox.HelloServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>helloServlet</servlet-name>
+        <url-pattern>/greeting</url-pattern>
+    </servlet-mapping>
+
+    <context-param>
+        <param-name>settingOne</param-name>
+        <param-value>foo</param-value>
+    </context-param>
+    <context-param>
+        <param-name>settingTwo</param-name>
+        <param-value>bar</param-value>
+    </context-param>
+
+    <!-- ServletParameterServlet -->
+    <servlet>
+        <servlet-name>servletParameterServlet</servlet-name>
+        <servlet-class>com.wrox.ServletParameterServlet</servlet-class>
+        <init-param>
+            <param-name>database</param-name>
+            <param-value>CustomerSupport</param-value>
+        </init-param>
+        <init-param>
+            <param-name>server</param-name>
+            <param-value>10.0.12.5</param-value>
+        </init-param>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>servletParameterServlet</servlet-name>
+        <url-pattern>/servletParameters</url-pattern>
+    </servlet-mapping>
+
+    <!-- Filter过滤器 -->
+    <!-- <servlet> <servlet-name>myServlet</servlet-name> <servlet-class>com.wrox.MyServlet</servlet-class> </servlet> <servlet-mapping> 
+        <servlet-name>myServlet</servlet-name> <url-pattern>/foo*</url-pattern> </servlet-mapping> <filter-mapping> <filter-name>servletFilter</filter-name> 
+        <servlet-name>myServlet</servlet-name> </filter-mapping> <filter-mapping> <filter-name>myFilter</filter-name> <url-pattern>/foo*</url-pattern> 
+        </filter-mapping> <filter-mapping> <filter-name>anotherFilter</filter-name> <url-pattern>/foo/bar</url-pattern> </filter-mapping> -->
+
+    <!-- Filter-Async-Application -->
+    <filter>
+        <filter-name>normalFilter</filter-name>
+        <filter-class>com.wrox.AnyRequestFilter</filter-class>
+        <async-supported>true</async-supported>
+    </filter>
+    <filter-mapping>
+        <filter-name>normalFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>forwardFilter</filter-name>
+        <filter-class>com.wrox.AnyRequestFilter</filter-class>
+        <async-supported>true</async-supported>
+    </filter>
+    <filter-mapping>
+        <filter-name>forwardFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+        <dispatcher>FORWARD</dispatcher>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>asyncFilter</filter-name>
+        <filter-class>com.wrox.AnyRequestFilter</filter-class>
+        <async-supported>true</async-supported>
+    </filter>
+    <filter-mapping>
+        <filter-name>asyncFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+        <dispatcher>ASYNC</dispatcher>
+    </filter-mapping>
+
+<servlet>
+  <servlet-name>clusterNode1</servlet-name>
+  <servlet-class>com.wrox.ClusterNodeServlet</servlet-class>
+  <init-param>
+    <param-name>nodeId</param-name>
+    <param-value>1</param-value>
+  </init-param>
+</servlet>
+<servlet-mapping>
+  <servlet-name>clusterNode1</servlet-name>
+  <url-pattern>/clusterNode1</url-pattern>
+</servlet-mapping>
+
+</web-app>
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
